@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.instar_management.instagram_management_back.insta.dao.InstaMapper">
+
+<insert id="saveUserInfoRow"
+        parameterType="com.instar_management.instagram_management_back.insta.domain.comment.userInfoRequestDTO">
+    INSERT INTO USER_INFO_TB(ID, NAME, PWD)
+    VALUES( #{id}, #{name}, #{pwd} )
+</insert>
+
+<select id="getUserInfoRow"
+         parameterType="java.util.HashMap"
+        resultType="com.instar_management.instagram_management_back.insta.domain.comment.userInfoResponseDTO">
+    SELECT ID, NAME, PWD 
+    FROM USER_INFO_TB
+    WHERE ID = #{id}
+</select>
+
+<!-- <select id="getUserInfoRow"
+        resultType="com.instar_management.instagram_management_back.insta.domain.comment.userInfoResponseDTO">
+    SELECT ID, NAME, PWD 
+    FROM USER_INFO_TB
+</select> -->
+
+<insert id="saveOnlyFollowerRow"
+        parameterType="com.instar_management.instagram_management_back.insta.domain.comment.dataRequestDTO">
+    INSERT INTO ONLY_FOLLOWER_TB(ID, HREF, VALUE, TIMESTAMP)
+    VALUES( #{id}, #{href}, #{value}, #{timestamp} )
+</insert>
+
+<insert id="saveOnlyFollowingRow"
+        parameterType="com.instar_management.instagram_management_back.insta.domain.comment.dataRequestDTO">
+    INSERT INTO ONLY_FOLLOWING_TB(ID, HREF, VALUE, TIMESTAMP)
+    VALUES( #{id}, #{href}, #{value}, #{timestamp} )
+</insert>
+
+<select id="getOnlyFollowerRow"
+        parameterType="java.util.HashMap"
+        resultType="com.instar_management.instagram_management_back.insta.domain.comment.dataResponseDTO">
+    SELECT ID, href, value, timestamp
+    FROM ONLY_FOLLOWER_TB
+    WHERE ID = #{id}
+</select>
+
+<select id="getOnlyFollowingRow"
+        parameterType="java.util.HashMap"
+        resultType="com.instar_management.instagram_management_back.insta.domain.comment.dataResponseDTO">
+    SELECT ID, href, value, timestamp
+    FROM ONLY_FOLLOWING_TB
+    WHERE ID = #{id}
+</select>
+
+<insert id="saveFollowerRow"
+        parameterType="com.instar_management.instagram_management_back.insta.domain.comment.dataRequestDTO">
+    INSERT INTO FOLLOWER_TB(ID, HREF, VALUE, TIMESTAMP)
+    VALUES( #{id}, #{href}, #{value}, #{timestamp} )
+</insert>
+
+<insert id="saveFollowingRow"
+        parameterType="com.instar_management.instagram_management_back.insta.domain.comment.dataRequestDTO">
+    INSERT INTO FOLLOWING_TB(ID, HREF, VALUE, TIMESTAMP)
+    VALUES( #{id}, #{href}, #{value}, #{timestamp} )
+</insert>
+
+<select id="getFollowerRow"
+        parameterType="java.util.HashMap"
+        resultType="com.instar_management.instagram_management_back.insta.domain.comment.dataResponseDTO">
+    SELECT ID, href, value, timestamp
+    FROM FOLLOWER_TB
+    WHERE ID = #{id}
+</select>
+
+<select id="getFollowingRow"
+        parameterType="java.util.HashMap"
+        resultType="com.instar_management.instagram_management_back.insta.domain.comment.dataResponseDTO">
+    SELECT ID, href, value, timestamp
+    FROM FOLLOWING_TB
+    WHERE ID = #{id}
+</select>
+</mapper>
